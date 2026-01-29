@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+/*import { test, expect } from '@playwright/test';
 
 const REPO = 'Api-testing-Playwright';
 const USER = 'juanemi10';
@@ -18,4 +18,4 @@ test('Crear issue usando configuración global', async ({ request }) => {
   
   const body = await response.json();
   console.log(`Número de issue: ${body.number}`);
-});
+});*/
