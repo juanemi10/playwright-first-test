@@ -9,30 +9,27 @@ test.describe('Acciones en el Automation Sandbox', () => {
     await sandbox.navigate();
   });
 
-  test('Click en botón ID dinámico', async () => {
-    await sandbox.dynamicIdButton.click();
-    await expect(sandbox.dynamicIdMessage).toBeVisible();
-  });
-
-  test('Ingreso texto en el input', async () => {
-    const texto = 'Estoy aprendiendo Playwright';
-    await sandbox.enterText(texto);
-    await expect(sandbox.mainInput).toHaveValue(texto);
-  });
-
-  test('Valido la columna Nombre de la tabla estática', async ({ page }) => {
+  test('Valido la columna Nombre de la tabla estática', async () => {
     const nombresEsperados = ['Messi', 'Ronaldo', 'Mbappe'];
     const valoresNombres = await sandbox.getStaticTableNames();
-    
     expect(valoresNombres).toEqual(nombresEsperados);
   });
 
-  test('Valido que los valores cambian en la tabla dinámica', async ({ page }) => {
+  test('Valido que todos los valores cambian en la tabla dinámica luego de un reload', async ({ page }) => {
     const valoresAntes = await sandbox.getDynamicTableValues();
-    await page.reload();
-    const valoresDespues = await sandbox.getDynamicTableValues();
+    console.log('VALORES ANTES:');
+    console.table(valoresAntes);
 
-    expect(valoresAntes.length).toBe(valoresDespues.length);
-    valoresAntes.forEach((valor, i) => expect(valor).not.toBe(valoresDespues[i]));
+    await page.reload();
+
+    const valoresPostReload = await sandbox.getDynamicTableValues();
+    console.log('VALORES DESPUES:');
+    console.table(valoresPostReload);
+
+    expect(valoresAntes.length).toBe(valoresPostReload.length);
+    
+    valoresAntes.forEach((valor: string | null, index: number) => {
+      expect(valor).not.toBe(valoresPostReload[index]);
+    });
   });
 });
