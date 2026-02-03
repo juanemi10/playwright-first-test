@@ -1,4 +1,4 @@
-import { type Locator, type Page, expect } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 
 export class SandboxPage {
     readonly page: Page;
@@ -15,7 +15,7 @@ export class SandboxPage {
     constructor(page: Page) {
         this.page = page;
         this.dynamicIdButton = page.getByRole('button', { name: 'Hacé click para generar un ID' });
-        this.dynamicIdMessage = page.getByText('OMG, aparezco después de 3 segundos');
+        this.dynamicIdMessage = page.getByText('OMG, aparezco después de 3 segundos de haber hecho click en el botón 👻.');
         this.mainInput = page.getByPlaceholder('Ingresá texto');
         this.pastaCheckbox = page.getByRole('checkbox', { name: 'Pasta 🍝' });
         this.siRadioButton = page.getByRole('radio', { name: 'Si' });
@@ -29,9 +29,16 @@ export class SandboxPage {
         await this.page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
     }
 
-    // Métodos de acción
     async enterText(text: string) {
         await this.mainInput.fill(text);
+    }
+
+    async selectCheckbox(label: string) {
+        await this.page.getByRole('checkbox', { name: label }).check();
+    }
+
+    async selectRadioButton(label: string) {
+        await this.page.getByRole('radio', { name: label }).check();
     }
 
     async getStaticTableNames() {
