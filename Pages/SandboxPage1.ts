@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+/*import { expect, type Locator, type Page } from '@playwright/test';
  
 export class SandboxPage {
     readonly page: Page;
@@ -16,4 +16,4 @@ export class SandboxPage {
     async verifyPastaChecked() {
         expect(this.pastaCheckbox).toBeChecked;
     }
-}
+}*/

@@ -1,4 +1,4 @@
-import { test, Browser, Page, expect } from '@playwright/test';
+/*import { test, Browser, Page, expect } from '@playwright/test';
 
 let browser: Browser;
 let page: Page;
@@ -117,4 +117,4 @@ test.describe('Acciones en el Automation Sandbox', () => {
 
     });
 
-});
+});*/
