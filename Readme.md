@@ -18,6 +18,7 @@ CI/CD: Pipeline configurado mediante GitHub Actions para ejecución automática 
 
 
 Plaintext
+
 ├── pages/              # Clases Page Object (Locators y Acciones)
 
 ├── tests/              # Scripts de prueba (.spec.ts)
@@ -56,6 +57,7 @@ npx playwright show-report
 
 
 📈 Casos de Prueba Automatizados
+
 Manejo de IDs dinámicos con esperas asincrónicas.
 
 Validación de Tablas Estáticas y comparación de arrays de datos.
